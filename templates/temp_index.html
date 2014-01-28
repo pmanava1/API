@@ -1,0 +1,132 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+
+<head>
+    <link rel="stylesheet" type ="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <title>{% block title %}OCP API{% endblock %}</title>
+
+    <script type="text/javascript">
+      function apply()
+      {
+      document.frm.sub.disabled=true;
+      if(document.frm.chk.checked==true)
+      {
+      document.frm.sub.disabled=false;
+      }
+      if(document.frm.chk.checked==false)
+      {
+      document.frm.sub.enabled=false;
+      }
+      }
+    </script>
+</head>
+
+
+<body>
+  <a href="http://openconnecto.me" target="_blank" align="center"><img src="{% static 'images/ocplogo.png' %}" border=0  /></a>
+{% block content %}
+
+ <div class="container-fluid">
+   <div class = "row-fluid">
+        <div class ="span12">
+
+          <div id="header" style="background-color:#4682B4;" align="center">
+            <h2 style="margin-bottom:0;"> DOWNLOAD API</h2></div>
+        </div>
+   </div>
+ </div>
+
+ <form method="post"  name="frm" action="" enctype="multipart/form-data">
+{% csrf_token %}
+   {{ form.non_field_errors }}
+   <div class="container-fluid">
+
+     <div class = "row-fluid"> <div class ="span12"></div></div>
+
+ <div class = "row-fluid"> <div class ="span12"></div></div>
+     <div class = "row-fluid">
+       <div class ="span1"></div>
+       <div class ="span2">
+         <div class="fieldWrapper">
+           {{ form.subject.errors }}
+           <label for="fname">First Name:</label>
+         </div>
+       </div>
+       <div class ="span2">
+         {{ form.firstname }}
+       </div>
+       <div class ="span7"></div>
+     </div>
+
+     <div class = "row-fluid">
+       <div class ="span1"></div>
+       <div class ="span2">
+         <div class="fieldWrapper">
+           {{ form.subject.errors }}
+           <label for="Lname">Last Name:</label>
+         </div>
+       </div>
+       <div class ="span2">
+         {{ form.lastname }}
+       </div>
+       <div class ="span7"></div>
+     </div>
+
+<div class = "row-fluid">
+       <div class ="span1"></div>
+       <div class ="span2">
+         <div class="fieldWrapper">
+           {{ form.subject.errors }}
+           <label for="institute">Institute:</label>
+         </div>
+       </div>
+       <div class ="span2">
+         {{ form.institute }}
+       </div>
+       <div class ="span7"></div>
+     </div>
+
+     <div class = "row-fluid">
+       <div class ="span1"></div>
+       <div class ="span2">
+         <div class="fieldWrapper">
+           {{ form.subject.errors }}
+           <label for="email">E-Mail:</label>
+         </div>
+       </div>
+       <div class ="span2">
+         {{ form.email }}
+       </div>
+       <div class ="span7"></div>
+     </div>
+
+
+     <div class = "row-fluid">
+       <div class ="span1"></div>
+       <div class ="span10" style="border: 3px LightSteelBlue solid;" align ="left">
+
+         <H1 align="center">No Cost, Open Source Software License Agreement</H1>
+	 <A HREF="http://openconnecto.me/data/scratch/license/license.pdf" target="_blank">License</A>
+       </div>
+
+       <div class ="span1"></div>
+     </div>
+     
+       <div class = "row-fluid">
+	 <div class ="span5"></div>
+	 <div class ="span3">
+	   <input type="checkbox" name="chk" onClick="apply()">I agree Terms and Conditions</input>
+	   <p><button class="btn btn-primary" name = "sub" type="submit" disabled>Download API</button></p>
+	 </div>
+	 <div class ="span4"></div>
+       </div>
+   </div>
+ </form>
+{% endblock %}
+
+</body>
+
